@@ -184,8 +184,8 @@ object GdalInfo {
           if (srs != null && projection.length != 0) {
             val latLong = srs.CloneGeogCS()
             if (latLong != null) {
-              val transform = CoordinateTransformation
-                .CreateCoordinateTransformation(srs, latLong)
+              //val transform = CoordinateTransformation.CreateCoordinateTransformation(srs,  latLong)
+              val transform = new CoordinateTransformation(srs,  latLong)
               if (transform != null) {
 		val point = transform.TransformPoint(geox, geoy, 0)
                 val xtrans = gdal.DecToDMS(point(0), "Long", 2)
